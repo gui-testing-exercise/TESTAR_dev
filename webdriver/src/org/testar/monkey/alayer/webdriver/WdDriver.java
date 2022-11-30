@@ -88,9 +88,9 @@ public class WdDriver extends SUTBase {
   private final Mouse mouse = WdMouse.build();
 
   private WdDriver(String sutConnector) {
-	
+
     String[] parts = sutConnector.split(" ");
-    
+
     String driverPath = parts[0].replace("\"", "");
 
     String osName = System.getProperty("os.name");
@@ -100,7 +100,7 @@ public class WdDriver extends SUTBase {
     	parts = sutConnector.substring(sutConnector.indexOf(".exe")).split(" ");
     	parts[0] = driverPath;
     }
-    
+
     String url = parts[parts.length - 1].replace("\"", "");
     Dimension screenDimensions = null;
     Point screenPosition = null;
@@ -140,7 +140,7 @@ public class WdDriver extends SUTBase {
 				+ "\n \"C:\\Windows\\chromedriver.exe\" \"1920x900+0+0\" \"https://www.testar.org\" \n";
 
 		System.out.println(msg);
-    	
+
       throw new SystemStartException("Not a valid webdriver");
     }
 
@@ -177,10 +177,12 @@ public class WdDriver extends SUTBase {
     	options.addArguments("--start-maximized");
     }
     if(disableSecurity) {
-        options.addArguments("ignore-certificate-errors");
-    	options.addArguments("--disable-web-security");
-    	options.addArguments("--allow-running-insecure-content");
+      options.addArguments("--disable-web-security");
+      options.addArguments("--allow-running-insecure-content");
     }
+
+    options.addArguments("--remote-debugging-port=9222");
+    // "/home/thiagomoura/chromedriver" "1920x900+0+0" "http://localhost:8080/"
 
     Map<String, Object> prefs = new HashMap<>();
     prefs.put("profile.default_content_setting_values.notifications", 1);
