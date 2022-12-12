@@ -60,7 +60,7 @@ public class FlashFeedback  extends JDialog implements Runnable {
 		this.add(msg);
 		int dimW = (title.length() + 1) * 12;
 		this.setSize(new Dimension(Math.min(dimW, 512), 32));
-		this.setOpacity(0.75f);
+//		this.setOpacity(0.75f);
 	}
 	
 	public static void flash(String title, int duration){

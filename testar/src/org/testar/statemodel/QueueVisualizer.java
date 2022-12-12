@@ -19,7 +19,7 @@ public class QueueVisualizer extends JDialog {
         int dimW = (title.length() + 1) * 12;
         this.setSize(new Dimension(dimW > 512 ? 512 : dimW, 32));
         this.setEnabled(false);
-        this.setOpacity(0.75f);
+//        this.setOpacity(0.75f);
         this.setVisible(true);
     }
 
